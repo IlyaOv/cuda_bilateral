@@ -7,4 +7,4 @@
 **Ускорение параллельного алгоритма**
 
 ### Входное изображение
-![alt text](http://url/to/img.png)
+![alt text](https://github.com/IlyaOv/cuda_bilateral/blob/main/image_input.bmp)
