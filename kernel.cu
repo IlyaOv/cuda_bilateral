@@ -2,15 +2,15 @@ texture<unsigned int, 2, cudaReadModeElementType> tex_image;
 
 __device__ float g_func(float x, float y, float sigma)
 {
-	return exp(-(pow(x, 2) + pow(y, 2)) / pow(sigma, 2));
+	return exp(-(pow(x, 2) - pow(y, 2)) / pow(sigma, 2));
 }
 
 __device__ float r_func(float f_i, float f_0, float sigma)
 {
-	return exp((pow(f_i, 2) - pow(f_0, 2)) / pow(sigma, 2));
+	return exp(pow(f_i - f_0, 2) / pow(sigma, 2));
 }
 
-__global__ void bilateral_filtering_gpu(unsigned char* result, int M, int N, float sigma_d, float sigma_r)
+__global__ void bilateralFilterGPU(unsigned char* result, int M, int N, float sigma_d, float sigma_r)
 {   
     int i = threadIdx.x + blockDim.x * blockIdx.x;
     int j = threadIdx.y + blockDim.y * blockIdx.y;
